@@ -53,35 +53,40 @@ function getRandomNumber() {
 
 
 function buildString() {
-	for (var i = 0; i < randomGeneratorConditions.pwLength; i++) {
-		let condition = randomInt(1,4);
+	
+		
 		let character = '';
-		console.log(condition);
-				switch(condition) {
+		for (let x = 1; x <= 4; x++) {
+			console.log('iteration: ' + x);
+				switch(x) {
 				case 4:
 					character = getRandomNumber();
 					randomGeneratorConditions.pwArray.push(character);
-					condition = 3;
+					console.log(character);
+					break;
 					
 				case 3: 
 					character = getRandomSymbol();
 					randomGeneratorConditions.pwArray.push(character);
-					condition = 2;
-					
+					console.log(character);
+					break;
 				case 2:
 					character = getRandomUcLetter();
 					randomGeneratorConditions.pwArray.push(character);
-					condition = 1;
+					console.log(character);
+					break;
 					
 				case 1: 
 					character = getRandomLcLetter();
 					randomGeneratorConditions.pwArray.push(character);
-					condition = 4;
-					
+					console.log(character);
+					break;
 			};
 		};
-	let yourString = randomGeneratorConditions.pwArray.join('');
-	console.log(yourString);
+		
+		
+	//let yourString = randomGeneratorConditions.pwArray.join('');
+	console.log(randomGeneratorConditions.pwArray);
 
 };
 
