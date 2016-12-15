@@ -6,8 +6,6 @@ const characters = {
 	lcLettersArray: [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' ],
 	ucLettersArray: [],
 	symbolsArray: [ '!', '-', '^', '?', '&', '*', '#'],
-			
-	
 };
 
 
@@ -22,22 +20,22 @@ let randomObject = {
     getRandomLcLetter: () => {
 		let num = randomObject.randomInt(0, characters.lcLettersArray.length-1);
 		let lcLetter = characters.lcLettersArray[num];
-    	return lcLetter;
+    	randomObject.pwArray.push(lcLetter);
 		},
     getRandomUcLetter: () => {
         let num = randomObject.randomInt(0, characters.ucLettersArray.length-1);
 		let ucLetter = characters.ucLettersArray[num];
-        return ucLetter;
+        randomObject.pwArray.push(ucLetter);
         },
     getRandomSymbol: () => {
         let num = randomObject.randomInt(0, characters.symbolsArray.length-1);
 		let symbol = characters.symbolsArray[num];
-        return symbol;
+        randomObject.pwArray.push(symbol);
         },
     getRandomNumber: () => {
         let num = randomObject.randomInt(0, 9);
 		let number = num;
-		return number;
+		randomObject.pwArray.push(number);
         }
 };
 
@@ -48,75 +46,69 @@ characters.lcLettersArray.forEach(function(item) {
 
 let regExp = /[a-z]+(?=[A-Z]+|[0-9]+)/ //proves true only if a-z char followed by either A-Z or a number
 
-let yourString= ''; 
 
-const lcRegExp= /[a-z]+/;
-const ucRegExp = /[A-Z]+/;
-const numRegExp = /[0-9]+/;
-const symbolRegExp = /(\!+)|(\-+)|(\^+)|(\?+)|(\&+)|(\*+)|(\#+)/;
-let allConditionsMet= false;
+
+const regExes = {
+    lcRegExp: /[a-z]+/,
+    ucRegExp: /[A-Z]+/,
+    numRegExp: /[0-9]+/,
+    symbolRegExp: /(\!+)|(\-+)|(\^+)|(\?+)|(\&+)|(\*+)|(\#+)/
+};
+
 
 
 function buildString() {
-		let character = '';
+        let character = '';
         let pw = randomObject.pwLength;
-        let x = randomObject.randomInt(1,pw*4);
-        let enoughChars = (randomObject.pwArray.length === pw);
+        let enoughChars = randomObject.pwArray.length;
         let allConditionsMet = false;
-            
-    function compile() {
-        while( enoughChars === false ) {
+        let yourString= '';            
+        let x = randomObject.randomInt(1,pw*4);
+    
+    if( randomObject.pwArray.length < 10 ) {
+        
+            while( allConditionsMet === false ) {
             
             console.log(x);
-            
+                //pull a character based on random x value
                 if (x >= 1 && x <= pw ) {
-                    character = randomObject.getRandomNumber();
-                    randomObject.pwArray.push(character);
-                    console.log(character);
+                    randomObject.getRandomNumber();
+                    
+                    
                     x = randomObject.randomInt(1,pw*4);
                     
                 } else if ( x >= pw+1 && x <= pw*2 ) {
-                    character = randomObject.getRandomSymbol();
-                    randomObject.pwArray.push(character);
-                    console.log(character);
+                    randomObject.getRandomSymbol();
+                    
                     x = randomObject.randomInt(1,pw*4);
                     
                 } else if ( x >= (pw+1)+pw && x <= pw*3 ) {
-                    character = randomObject.getRandomUcLetter();
-                    randomObject.pwArray.push(character);
-                    console.log(character);
+                    randomObject.getRandomUcLetter();
+                    
                     x = randomObject.randomInt(1,pw*4);
                     
                 } else if ( x >= (pw+1)+pw+pw && x <= pw*4 ) {
-                    character = randomObject.getRandomLcLetter();
-                    randomObject.pwArray.push(character);
-                    console.log(character);
+                    randomObject.getRandomLcLetter();
+                    
                     x = randomObject.randomInt(1,pw*4);
-                };
-                yourString = randomObject.pwArray.join('');
-                allConditionsMet = lcRegExp.test(yourString) && ucRegExp.test(yourString) && numRegExp.test(yourString) && symbolRegExp.test(yourString);
-                enoughChars = randomObject.pwArray.length === pw;
-                };
-            };
-        
-                        
-                if (allConditionsMet=== true) {
-                    console.log("All conditions?: " + allConditionsMet);
-                    console.log("Length condition?: " + enoughChars);
-                    console.log(yourString);
-                } else {
-                    compile();
                 }; 
-            
+                //check to see if all characters condition met
+                yourString = randomObject.pwArray.join('');
+                allConditionsMet = regExes.lcRegExp.test(yourString) && regExes.ucRegExp.test(yourString) && regExes.numRegExp.test(yourString) && regExes.symbolRegExp.test(yourString);
+                console.log("All conditions?: " + allConditionsMet);
                 console.log(yourString);
                 console.log(randomObject.pwArray.length);
-                
-        }; 
-                       
+                }; //exit while loop if all characters included
         
-	           
-		
-		
+    } else {
+        console.log(yourString);
+        console.log(randomObject.pwArray.length);
+
+    }; 
+       
+        
+   }; //exit buildString function 
+	
 		
 buildString();
 
