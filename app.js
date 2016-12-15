@@ -65,9 +65,9 @@ function buildString() {
         let yourString= '';            
         let x = randomObject.randomInt(1,pw*4);
     
-    if( randomObject.pwArray.length < 10 ) {
+    
         
-            while( allConditionsMet === false ) {
+            while( allConditionsMet === false && randomObject.pwArray.length !== 10) {
             
             console.log(x);
                 //pull a character based on random x value
@@ -100,11 +100,8 @@ function buildString() {
                 console.log(randomObject.pwArray.length);
                 }; //exit while loop if all characters included
         
-    } else {
-        console.log(yourString);
-        console.log(randomObject.pwArray.length);
+  
 
-    }; 
        
         
    }; //exit buildString function 
