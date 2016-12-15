@@ -27,6 +27,8 @@ characters.lcLettersArray.forEach(function(item) {
 	characters.ucLettersArray.push(item.toUpperCase());
 	});
 
+let regExp = /[a-z]+?=[A-Z]+|[0-9]+/ //proves true only if a-z char followed by A-Z or a number
+
 function getRandomLcLetter() {
 		let num = randomInt(0, characters.lcLettersArray.length);
 		let lcLetter = characters.lcLettersArray[num];
