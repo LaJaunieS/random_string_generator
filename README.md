@@ -1,2 +1,2 @@
 # random_string_generator
-A random string generator script- perfect for generating random passwords or scaring your pets
+A random string generator script- right now only works in the console
