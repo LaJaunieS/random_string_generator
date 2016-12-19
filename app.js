@@ -32,7 +32,7 @@ function getRandomNumber(){
 
 let randomObject = {
 	finalArray: [],
-	pwLength: 8,
+	pwLength: 10,
     randomInt: function(min, max) {
                       min = Math.ceil(min);
                       max = Math.floor(max);
@@ -65,17 +65,18 @@ function buildString() {
     allConditionsMet = regExes.lcRegExp.test(yourString) && regExes.ucRegExp.test(yourString) && regExes.numRegExp.test(yourString) && regExes.symbolRegExp.test(yourString);
     
     
-    if (allConditionsMet === true) {
-        yourString = randomObject.finalArray.join('');
-        console.log(yourString);
-        } else {
-            console.log('run loop');
+    while (allConditionsMet === false) {
+        randomObject.finalArray= [];
             for(var i = 0; i < pw; i++) {
                 let x = randomObject.randomInt(0,3);
                 randomObject.arrayOfFunctions[x]();
-            };       
                 yourString = randomObject.finalArray.join('');
                 allConditionsMet = regExes.lcRegExp.test(yourString) && regExes.ucRegExp.test(yourString) && regExes.numRegExp.test(yourString) && regExes.symbolRegExp.test(yourString);
+                
+            };       
+        yourString = randomObject.finalArray.join('');
+        console.log(yourString);
+        
                 console.log(allConditionsMet);
                 console.log(yourString);
         };
