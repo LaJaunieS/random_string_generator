@@ -47,7 +47,7 @@ function buildString() {
                           max = Math.floor(max);
                           return Math.floor(Math.random() * (max - min + 1)) + min;
                         },
-
+        //functions placed into array for iterating through later
         arrayOfFunctions: [ getRandomLcLetter, getRandomUcLetter, getRandomSymbol, getRandomNumber ]
         };
 
@@ -60,22 +60,20 @@ function buildString() {
         });
  
 //now perform the function
-        while (allConditionsMet === false) {
-            randomObject.finalArray= [];
-                for(var i = 0; i < randomObject.pwLength; i++) {
-                    let x = randomObject.randomInt(0,3);
-                    randomObject.arrayOfFunctions[x]();
-                    yourString = randomObject.finalArray.join('');
-                    allConditionsMet = regExes.lcRegExp.test(yourString) && regExes.ucRegExp.test(yourString) && regExes.numRegExp.test(yourString) && regExes.symbolRegExp.test(yourString);
-
-                };       
+    while (allConditionsMet === false) {
+        randomObject.finalArray= [];
+    
+        for(var i = 0; i < randomObject.pwLength; i++) {
+            let x = randomObject.randomInt(0,3);
+            randomObject.arrayOfFunctions[x]();
             yourString = randomObject.finalArray.join('');
-            console.log(yourString);
-
-                    console.log(allConditionsMet);
-                    console.log(yourString);
-            };
-
+            allConditionsMet = regExes.lcRegExp.test(yourString) && regExes.ucRegExp.test(yourString) && regExes.numRegExp.test(yourString) && regExes.symbolRegExp.test(yourString);
+            };       
+        
+        yourString = randomObject.finalArray.join('');
+        console.log(yourString);
+        console.log(allConditionsMet);
+        }; //exit while loop
 
        }; //exit buildString function 
 
