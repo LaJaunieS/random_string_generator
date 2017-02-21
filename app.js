@@ -71,10 +71,10 @@ function buildString() {
             };       
         
         yourString = randomObject.finalArray.join('');
-        console.log(yourString);
         console.log(allConditionsMet);
+        console.log("String: " + yourString);
         }; //exit while loop
-
+        document.getElementById("string").innerHTML = "Your random string is: " + yourString; 
        }; //exit buildString function 
 
 		
