@@ -10,8 +10,36 @@
     </head>
     
     <body>
-<!--    <h6>Psst....open the console (Ctrl + K)</h6>-->
-    <h2 id="string"></h5>
+    <div id="param-form-container">
+         <fieldset id="param-form">
+            <ul>
+                <li><label value= "Number of characters" for="charlength">Number of characters (5-15)</label>
+                    <select value="15" id="charLength" name="charlength" required>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                        <option>11</option>
+                        <option>12</option>
+                        <option>13</option>
+                        <option>14</option>
+                        <option>15</option>
+                        <!--    add with js<option>1</option>-->
+                    </select>               
+                </li> 
+                <li>
+                    <label value="Special Characters" for="specialchar">Include special characters (!, -, ^, ?, &amp;, *, and #)</label><input id="checkbox" checked="true" type="checkbox">
+                </li>
+                <li><button id="submitButton" value="getString">Get the string</button> </li>
+             
+             
+            </ul>
+        </fieldset>   
+        
+    </div>
+    <h2 id="string"></h2>
     <script src="app.js" type="text/javascript"></script>
     </body>
     

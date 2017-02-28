@@ -2,8 +2,24 @@
 
 console.log('script running');
 
-function buildString() {
+let submitButton = document.getElementById("submitButton");
 
+function onSubmit() {
+    let params = {
+        numberOfChars: document.getElementById("charLength").value,
+        specialChars: document.getElementById("checkbox").checked
+    };
+    buildString(params);
+    //capture input values
+    //use as parameters in build string function
+    //run build string function
+    
+};
+
+
+function buildString(params) {
+
+    let stringParams = params;
     const characters = {
         lc: [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' ],
         uc: [],
@@ -41,7 +57,7 @@ function buildString() {
 
     let randomObject = {
         finalArray: [],
-        pwLength: 8,  //this will eventually be set by the user
+        pwLength: stringParams.numberOfChars,  //this will eventually be set by the user
         randomInt: function(min, max) {
                           min = Math.ceil(min);
                           max = Math.floor(max);
@@ -50,7 +66,7 @@ function buildString() {
         //functions placed into array for iterating through later
         arrayOfFunctions: [ getRandomLcLetter, getRandomUcLetter, getRandomSymbol, getRandomNumber ]
         };
-
+    console.log(randomObject.pwLength);
     
     let yourString = '';
     let allConditionsMet = regExes.lcRegExp.test(yourString) && regExes.ucRegExp.test(yourString) && regExes.numRegExp.test(yourString) && regExes.symbolRegExp.test(yourString);
@@ -75,9 +91,14 @@ function buildString() {
         console.log("String: " + yourString);
         }; //exit while loop
         document.getElementById("string").innerHTML = "Your random string is: " + yourString; 
+    
+    
        }; //exit buildString function 
 
-		
-buildString();
+
+submitButton.addEventListener("click", onSubmit, false);
+
+//onSubmit();		
+//buildString();
 
 	
