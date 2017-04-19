@@ -2,7 +2,7 @@
 
 console.log('script running');
 
-let submitButton = document.getElementById("submitButton");
+const submitButton = document.getElementById("submitButton");
 
 function onSubmit() {
     //capture input values
@@ -84,7 +84,7 @@ function buildString(params) {
    
  
     //now perform the function
-    while (allConditionsMet === false) {
+    while (!allConditionsMet) {
         randomObject.finalArray= [];
     
         for(var i = 0; i < randomObject.pwLength; i++) {
