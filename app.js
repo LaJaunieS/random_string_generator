@@ -1,6 +1,7 @@
 'use strict'
 
 function generator() {
+
 	let params = {
         numberOfChars: document.getElementById("charLength").value,
         specialChars: document.getElementById("checkbox").checked
@@ -104,6 +105,9 @@ function generator() {
 
 const submitButton = document.getElementById('submitButton');
 const _rpg = generator();
+
+//This is so it will run once on default settings when document loads
+generator().onSubmit(); 
 
 submitButton.addEventListener("click", _rpg.onSubmit, false);
 
